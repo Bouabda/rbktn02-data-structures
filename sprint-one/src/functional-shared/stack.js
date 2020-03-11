@@ -1,8 +1,39 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
-};
+  var someInstance = {};
+  someInstance.push ;
+  someInstance.pop ;
+  someInstance.size ;
+  someInstance.last = 0;
+  someInstance.storage = {};
+  extend (someInstance , Stack.stackMethods ) ;
 
-var stackMethods = {};
+  return someInstance ;
+  };
 
+  var extend = function (to , from ) {
+    for (var key in from){
+      to[key]= from[key] ;
+    }
+  };
+
+  Stack.stackMethods = {};
+
+  Stack.stackMethods.push = function (value) {
+    this.storage[this.last] = value;
+    this.last = this.last + 1;
+    return this.last
+  }
+
+  Stack.stackMethods.pop = function() {
+    var deletedValue = this.storage[this.last]
+    if(this.last >= 1) {
+      delete this.storage[this.last] ;
+      this.last = this.last -1 ;
+    }
+    return deletedValue ;
+  }
+
+  Stack.stackMethods.size = function() {
+    return this.last ;
+  }
 
