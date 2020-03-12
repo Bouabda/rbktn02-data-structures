@@ -18,13 +18,9 @@ var Stack = function() {
     if  (top >= 1) {
      delete storage[top] ;
      top = top - 1 ;
-
     }
     return storage[top]
   }
-
-
-
 
   someInstance.size = function() {
     return top;
